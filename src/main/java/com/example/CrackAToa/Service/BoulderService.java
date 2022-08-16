@@ -15,8 +15,6 @@ public class BoulderService {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    final String SELECT_ID = "SELECT * FROM Boulder_routes WHERE id = ?";
-
 
     public BoulderRepo getRepo() {
         return repo;

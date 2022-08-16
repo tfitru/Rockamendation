@@ -23,9 +23,7 @@ public class BoulderController {
 
     @GetMapping("/allB")
     public @ResponseBody List<Boulder_routes> All() {
-
         boulder_routesList = boulderService.getRepo().findAll();
-
         return boulderService.getRepo().findAll();
     }
 
@@ -42,6 +40,16 @@ public class BoulderController {
         }
         return ranking;
     }
+
+    @GetMapping("/{grading}/{state}")
+    public @ResponseBody List<Boulder_routes> findByGradeAndState(@PathVariable String grading, @PathVariable String state) {
+        return boulderService.getRepo().getAllGradeAndState(grading, state);
+    }
+
+
+    // Need to change this to response entity
+    // Write up tests for all of these methods
+    //
 
 
 }
