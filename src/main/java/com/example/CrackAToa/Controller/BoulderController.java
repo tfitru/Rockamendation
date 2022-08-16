@@ -53,7 +53,7 @@ public class BoulderController {
     public @ResponseBody ResponseEntity<List<Boulder_routes>> findByRouteByState(@PathVariable String state) {
         return new ResponseEntity<List<Boulder_routes>>(boulderRepo.getRepo().findByState(state), HttpStatus.OK);
     }
-    
+
     @GetMapping("/StateGradeRoutes/{grading}/{state}")
     public @ResponseBody ResponseEntity<List<Boulder_routes>> findRoutesByGorgeState(@PathVariable String grading, @PathVariable String state) {
         return new ResponseEntity<List<Boulder_routes>>(boulderRepo.getRepo().findByGradingAndState(grading, state),HttpStatus.OK);
