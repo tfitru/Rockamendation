@@ -1,4 +1,4 @@
-package com.example.CrackAToa.Repository;
+package com.example.CrackAToa.Service;
 
 import com.example.CrackAToa.Service.BoulderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class BoulderRepoC {
 
     @Autowired
-    BoulderService boulderService;
+    private BoulderService boulderService;
 
     public BoulderService getBoulderService() {
 
