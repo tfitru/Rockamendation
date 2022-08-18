@@ -3,6 +3,7 @@ import './App.css';
 import RockComponent from './RockComponent';
 import Dropdown from './Dropdown';
 import LocationDropDown from './LocationDropDown';
+import ButtonClick from './TestButton';
 
 function App() {
   // const[state, setRockState] = useState("");
@@ -10,9 +11,10 @@ function App() {
   return (
     <div>
       <header className="container">
-      <Dropdown />        
+      <Dropdown />
       <LocationDropDown/>
-      <RockComponent />
+      <ButtonClick/> 
+      {/* <RockComponent /> */}
       </header>
     </div>
   );
