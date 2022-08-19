@@ -28,7 +28,7 @@ componentDidMount(){
 
 render() {
     return (
-        <div class="dropdown">
+        <div class="dropdown" >
             <select className='custom-select'>{this.state.rocks.map((rock)=>(
                 <><option>{rock.grading}</option></>
             ))}
@@ -40,7 +40,7 @@ render() {
             </select>
 
             <h2 className="text-center">Climbing Details</h2>
-            <table className="table table-striped">
+            <table className="table table-striped" >
                 <thead>
                     <tr>
                         <th>Route</th>
@@ -49,7 +49,8 @@ render() {
                         <th>URL</th>
                     </tr>
                 </thead>
-                <tbody>
+
+                <tbody style={{backgroundImage: "url(public/2010874.png"}}>
                     {this.state.rocks.length ===0 ?
                     <tr align="center">
                         <td colSpan='6'>Climbing</td>
