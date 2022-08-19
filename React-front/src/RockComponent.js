@@ -29,7 +29,7 @@ componentDidMount(){
 render() {
     return (
         <div class="dropdown" >
-            <select className='custom-select'>{this.state.rocks.map((rock)=>(
+            {/* <select className='custom-select'>{this.state.rocks.map((rock)=>(
                 <><option>{rock.grading}</option></>
             ))}
             </select>
@@ -37,7 +37,7 @@ render() {
                 <><option>{rock.state}</option></>
 
             ))}
-            </select>
+            </select> */}
 
             <h2 className="text-center">Climbing Details</h2>
             <table className="table table-striped" >
