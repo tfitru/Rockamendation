@@ -1,25 +1,75 @@
+import React, { useState } from 'react'
+import RockService from './RockService'
+import axios from 'axios'
+import Select from 'react-select'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "./App.css"
+import GetFun, { validRocks } from './GetFun'
 
-import Axios from "axios";
-import { React, useState } from "react";
 
-function GradingAndLoc(){
-const [data, setData] = useState("");
-const [grade, setGrade] = useState("");
-const [location, setLocation] = useState("");
+export default class Dropdown1 extends React.Component{
 
-function getRocks(){
-  Axios.get(`http://localhost:8080/Rock${grade}/${location}`
-  ).then((response)=>{
-    setData(response.data)
-  });
+  
+
+  handleClick = ( arg1, arg2) => {
+    const [data, setData] = useState("");
+    console.log(`${arg1}, ${arg2}`);
+  }
+
+  submit = (e) => {
+    let idx = e.target.selectedIndex;
+    let dataset = e.target.options[idx].dataset;
+    console.log('ISD code', dataset.isd)
+  }
+
+  submitLoc = (e) => {
+    let idx = e.target.selectedIndex;
+    let dataset = e.target.options[idx].dataset;
+    console.log('Selected value:', dataset.isd)
+  }
+
+
+
+  // constructor(props){
+  //   super(props);
+  //   this.submit = this.submit.bind(this);
+  // }
+
+  constructor(props) {
+    
+    super(props)
+    this.submit = this.submit.bind(this);
+    this.submitLoc = this.submit.bind(this);
+    this.state={
+        rocks:[]
+    };
 }
 
-return(
-    <div className="App">
-        <h1></h1>
-        <div className="list">
-         <h1></h1>
-      <select className="custom-select1" >
+examplePress() {
+ const getfunction = (grade, location) => {
+axios.get(`http://localhost:8080/Rock/${grade}/${location}`)
+.then(res => {
+    const rocks = res.data;
+    this.setState({rocks});
+})
+}
+}
+
+// ${this.submit}/${this.submitLoc}
+
+    render() {
+     
+      let y;
+      let x;
+
+      
+        return (
+          
+          
+            <div>
+            <header>
+                <select className="custom-select1" 
+                >
                   <option></option>
                   <option data-isd="0" value="VB">VB</option>
                   <option data-isd="1" value="V0">V0</option>
@@ -63,16 +113,22 @@ return(
                   <option data-isd="2" value="Pennsylvania">Pennsylvania</option>
                   <option data-isd="3" value="Delaware">Delaware</option>
                 </select>
-                <button
-          onClick={() => {
-            getRocks();
-          }}
-        ></button>
-        </div>
+                <button onClick={this.examplePress.getfunction(`custom-select1`,`custom-select`)}>Press me</button>
+                <ul>
+            {
+                this.state.rocks
+                .map(rock => (
+                    <li key={rock.id} >{rock.route} {rock.url}</li>
+                ))
+            }
+        </ul>
 
-    </div>
-)
-
+              </header>
+              </div>
+        )
+}
 }
 
-export default GradingAndLoc;
+//  validRocks(this.submit, this.submitLoc);
+
+
