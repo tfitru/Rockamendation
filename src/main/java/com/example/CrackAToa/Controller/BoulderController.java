@@ -1,55 +1,54 @@
 package com.example.CrackAToa.Controller;
 
 import com.example.CrackAToa.Models.Boulder_routes;
+import com.example.CrackAToa.Repository.BoulderRepo;
 import com.example.CrackAToa.Service.BoulderService;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:3000")
-@Controller
+
+
+@RestController
 @RequestMapping("/Rock")
+@CrossOrigin(origins = "http://localhost:3000")
 public class BoulderController {
 
     @Autowired
-    BoulderService boulderService;
-
-    List<Boulder_routes> boulder_routesList;
+    BoulderService boulderRepo;
 
 
-    @GetMapping("/allB")
-    public @ResponseBody List<Boulder_routes> All() {
-        boulder_routesList = boulderService.getRepo().findAll();
-        return boulderService.getRepo().findAll();
-    }
-
-    @GetMapping("/allB/{id}")
-    public @ResponseBody Optional<Boulder_routes> byId(@PathVariable int id) {
-        return boulderService.getRepo().findById(id);
-    }
-
-    @GetMapping("/grading")
-    public @ResponseBody List<String> findByGrade() {
-        List<String> ranking = new ArrayList<>();
-        for(int i = 0 ; i<boulder_routesList.size();i++){
-            ranking.add(boulder_routesList.get(i).getGrading());
-        }
-        return ranking;
-    }
-
-    @GetMapping("/{grading}/{state}")
-    public @ResponseBody List<Boulder_routes> findByGradeAndState(@PathVariable String grading, @PathVariable String state) {
-        return boulderService.getRepo().getAllGradeAndState(grading, state);
+    @GetMapping("/AllRoutes")
+    public @ResponseBody ResponseEntity<List<Boulder_routes>> allRoutes() {
+        return new ResponseEntity<List<Boulder_routes>>(boulderRepo.getRepo().findAll(),HttpStatus.OK);
     }
 
 
-    // Need to change this to response entity
-    // Write up tests for all of these methods
-    //
+    @GetMapping("/AllRoutes/{grading}")
+    public @ResponseBody ResponseEntity<List<Boulder_routes>> findByGrading(@PathVariable String grading){
+        return new ResponseEntity<List<Boulder_routes>>(boulderRepo.getRepo().findByGrading(grading), HttpStatus.ACCEPTED);
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/StateRoutes/{state}")
+    public @ResponseBody ResponseEntity<List<Boulder_routes>> findByRouteByState(@PathVariable String state)
+    {
+        return new ResponseEntity<List<Boulder_routes>>(boulderRepo.getRepo().findByState(state), HttpStatus.OK);
+    }
+    
+    @GetMapping("/StateGradeRoutes/{grading}/{state}")
+    public @ResponseBody ResponseEntity<List<Boulder_routes>> findRoutesByGorgeState(@PathVariable String grading, @PathVariable String state) {
+        return new ResponseEntity<List<Boulder_routes>>(boulderRepo.getRepo().findByGradingAndState(grading, state),HttpStatus.OK);
+    }
+
+    @GetMapping("/StateGorge/{state}/{gorge}")
+    public @ResponseBody ResponseEntity<List<Boulder_routes>> findRoutesByGorgeStateGrade(@PathVariable String gorge, @PathVariable String state) {
+        return new ResponseEntity<List<Boulder_routes>>(boulderRepo.getRepo().findByStateAndGorge(state, gorge),HttpStatus.OK);
+    }
 
 
 }

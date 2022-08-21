@@ -5,7 +5,12 @@ import Select from 'react-select'
 import "./App.css"
 
 
+
+
+
+
 export default class RockComponent extends React.Component{
+
 constructor(props) {
     super(props)
 
@@ -16,19 +21,43 @@ constructor(props) {
 
 
 
+
+
+
+
 componentDidMount(){
-    axios.get("http://localhost:8080/Rock/allB")
+    axios.get("http://localhost:8080/Rock/AllRoutes")
     .then(response => response.data)
     .then((data) => {
         this.setState({rocks: data});
     })
 }
 
+// /AllRoutes/{grading}
+
+// StateRoutes/{state}
+
+// /StateGradeRoutes/{grading}/{state}
+
+// StateGorge/{state}/{gorge}
+
+ 
+
+componentDidUpdate(){
+    axios.get(`http://localhost:8080/Rock/AllRoutes`)
+    .then(response => response.data)
+    .then((data) => {
+        this.setState({rocks:data})
+    })
+}
+
+
+
 
 
 render() {
     return (
-        <div class="dropdown" >
+        <div class="button" >
             {/* <select className='custom-select'>{this.state.rocks.map((rock)=>(
                 <><option>{rock.grading}</option></>
             ))}
