@@ -45,7 +45,18 @@
   background-image: url('./images/Mountain.png');
   background-size: cover;
   background-repeat: no-repeat;
+  position: relative;
+  height: 3rem;
   
+ }
+
+
+ .sticky-inner{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
  }
 
  h1{
