@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import axios from 'axios'
 import {useState, useEffect} from 'react'
 import * as React from 'react';
-import IconButton from '@mui/material/IconButton';
+import StickyHeader from 'react-sticky-header'
 
 
 function RockAmendationComp(){
@@ -19,6 +19,7 @@ function RockAmendationComp(){
       allRockData()
   }, []);
 
+
  
 
  const andd1Change = (e) => {
@@ -29,10 +30,10 @@ function RockAmendationComp(){
   }
 
 
-  const gradeChange = (e) => {
+  const gradeChange = (event) => {
     axios
-        .get(`http://localhost:8080/Rock/AllRoutes/` + e.target.value)
-        .then((response) => setGradeRocks(response.data))
+        .get(`http://localhost:8080/Rock/AllRoutes/` + event.target.value)
+        .then((response) => console.log(response.data))
         .then((error) => console.log(error));
 }
 
@@ -43,8 +44,8 @@ function RockAmendationComp(){
             
                 
 
-           
-       <header>
+          
+       <header className="sticky-inner">
     
 
         <h2>
@@ -53,16 +54,17 @@ function RockAmendationComp(){
           <Button variant = "contained" onClick={andd1Change} value="Pennsylvania" className='pa'> Pennsylvania </Button>
         </h2>
         <h3>
-        <Button variant = "contained" onClick={gradeChange} value="V0" className='V0'> V0 </Button>
-          <Button variant = "contained" onClick={gradeChange} value="V5" className='V0'> V5 </Button>
-          <Button variant = "contained" onClick={gradeChange} value="V10" className='V0'> V10 </Button>
+          <Button variant = "contained" onClick={gradeChange} value="V0" className='V0'> V0 </Button>
+          <Button variant = "contained" onClick={gradeChange} value="V5" className='V5'> V5 </Button>
+          <Button variant = "contained" onClick={gradeChange} value="V10" className='V10'> V10 </Button>
         </h3>
        
             
      
       <h1 className="text-center" >RockAmendation</h1>
-      </header> 
-            <table className="table table-striped" >
+      </header>  
+ 
+             <table className="table table-striped" >
                 <thead>
                     <tr>
                         <th>Route</th>
@@ -78,7 +80,7 @@ function RockAmendationComp(){
                     <td>{rock.route}</td>
                     <td>{rock.grading}</td>
                     <td>{rock.gorge}</td>
-                    <td href={rock.url}>{rock.url}</td>
+                    <link href={rock.url}><td onClick={rock.url}>{rock.url}</td></link>
                     </tr>
                   ))
                     
