@@ -1,20 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
-import RockComponent from './RockComponent';
-import Dropdown from './Dropdown1';
-import LocationDropDown from './LocationDropDown';
+import Button from '@mui/material/Button';
+import axios from 'axios'
+import {useState, useEffect} from 'react'
+
+import { Table } from 'react-bootstrap'
+import RockAmendationComp from './RockAmendationComp';
+
 
 function App() {
-  // const[state, setRockState] = useState("");
+
+  
 
   return (
-    <div>
-      <header className="container">
-      <Dropdown />
-      <LocationDropDown/>
-      <RockComponent />
-      </header>
+    <div className="App">
+      <RockAmendationComp/>
     </div>
+
   );
 }
 

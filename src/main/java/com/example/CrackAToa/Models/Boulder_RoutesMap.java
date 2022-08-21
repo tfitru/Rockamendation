@@ -1,29 +1,10 @@
 package com.example.CrackAToa.Models;
 
 import org.springframework.jdbc.core.RowMapper;
-
-import javax.persistence.Column;
-import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Boulder_RoutesMap implements RowMapper<Boulder_routes> {
-
-
-//    private Integer id;
-//    private String route;
-//    private String grading;
-//    private BigDecimal areaLatitude;
-//    private BigDecimal areaLongitude;
-//    private String state;
-//    private String gorge;
-//    private String area;
-//    private String crag;
-//    @Column(name="Subcrag")
-//    private String subCrag;
-//    private String description;
-//    private String url;
-
 
     @Override
     public Boulder_routes mapRow(ResultSet rs, int rowNum) throws SQLException {

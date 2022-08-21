@@ -19,7 +19,7 @@ public class BoulderService {
     @Autowired
     BoulderRepo repo;
 
-    public BoulderRepo getRepo(){
+    public BoulderRepo getRepo() {
         return repo;
     }
 

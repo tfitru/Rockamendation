@@ -59,10 +59,15 @@ public class BoulderController {
         return new ResponseEntity<List<Boulder_routes>>(boulderRepo.getRepo().findByGradingAndState(grading, state),HttpStatus.OK);
     }
 
-    @GetMapping("/StateGorge/{state}/{gorge}")
-    public @ResponseBody ResponseEntity<List<Boulder_routes>> findRoutesByGorgeStateGrade(@PathVariable String gorge, @PathVariable String state) {
-        return new ResponseEntity<List<Boulder_routes>>(boulderRepo.getRepo().findByStateAndGorge(state, gorge),HttpStatus.OK);
+    @GetMapping("/{grading}/{state}")
+    public @ResponseBody List<Boulder_routes> findByGradeAndState(@PathVariable String grading, @PathVariable String state) {
+        return boulderService.getRepo().getAllGradeAndState(grading, state);
     }
+
+
+    // Need to change this to response entity
+    // Write up tests for all of these methods
+    //
 
 
 }
