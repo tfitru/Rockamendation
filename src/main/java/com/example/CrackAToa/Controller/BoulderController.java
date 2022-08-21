@@ -33,7 +33,6 @@ public class BoulderController {
         return new ResponseEntity<List<Boulder_routes>>(boulderRepo.getRepo().findByGrading(grading), HttpStatus.ACCEPTED);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/StateRoutes/{state}")
     public @ResponseBody ResponseEntity<List<Boulder_routes>> findByRouteByState(@PathVariable String state)
     {

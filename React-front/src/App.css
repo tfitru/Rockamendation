@@ -37,12 +37,17 @@
   }
 }
 
-.bg {
-  background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(20).webp");
-  height: 100vh;
-  background-position: center;
-  background-repeat: no-repeat;
+
+
+
+
+ header{
+  background-image: url('./images/Mountain.png');
   background-size: cover;
-}
+  background-repeat: no-repeat;
+  
+ }
 
-
+ h1{
+  font-size: 120px;
+ }
