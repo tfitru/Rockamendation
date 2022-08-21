@@ -2,17 +2,18 @@
 import Button from '@mui/material/Button';
 import axios from 'axios'
 import {useState, useEffect} from 'react'
+import * as React from 'react';
+import IconButton from '@mui/material/IconButton';
+
 
 function RockAmendationComp(){
     const[gradeLocationRocks, setGradeLocationRocks] = useState([]);
+    const[gradeRocks, setGradeRocks] = useState([]);
+
 
   const allRockData = async() =>{
     const response = await axios.get("http://localhost:8080/Rock/AllRoutes")
-    console.log(response.data);
   }
-
-  
-
 
   useEffect(function(){
       allRockData()
@@ -28,18 +29,39 @@ function RockAmendationComp(){
   }
 
 
+  const gradeChange = (e) => {
+    axios
+        .get(`http://localhost:8080/Rock/AllRoutes/` + e.target.value)
+        .then((response) => setGradeRocks(response.data))
+        .then((error) => console.log(error));
+}
 
   return(
-    <div>
-    <h1>
+    
+    <div >
+        
+            
+                
+
+           
+       <header>
+    
+
+        <h2>
           <Button variant = "contained" onClick={andd1Change} value="Delaware" className='de'> Delaware </Button>
           <Button variant = "contained" onClick={andd1Change} value="New Jersey" className='nj'> New Jersey </Button>
           <Button variant = "contained" onClick={andd1Change} value="Pennsylvania" className='pa'> Pennsylvania </Button>
-        </h1>
+        </h2>
+        <h3>
+        <Button variant = "contained" onClick={gradeChange} value="V0" className='V0'> V0 </Button>
+          <Button variant = "contained" onClick={gradeChange} value="V5" className='V0'> V5 </Button>
+          <Button variant = "contained" onClick={gradeChange} value="V10" className='V0'> V10 </Button>
+        </h3>
+       
             
-      <header className="container">        
-      </header>
-      <h2 className="text-center">RockAmendation</h2>
+     
+      <h1 className="text-center" >RockAmendation</h1>
+      </header> 
             <table className="table table-striped" >
                 <thead>
                     <tr>
@@ -61,6 +83,7 @@ function RockAmendationComp(){
                   ))
                     
                   }
+      
                 </tbody>
             </table>
             </div>

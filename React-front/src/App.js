@@ -1,10 +1,5 @@
 import './App.css';
-import Button from '@mui/material/Button';
-import axios from 'axios'
-import {useState, useEffect} from 'react'
-
-import { Table } from 'react-bootstrap'
-import RockAmendationComp from './RockAmendationComp';
+import RockAmendationComp from './RockComp/RockAmendationComp';
 
 
 function App() {

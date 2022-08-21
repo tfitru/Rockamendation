@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-import RockService from './RockService'
 import axios from 'axios'
-import Select from 'react-select'
 import "./App.css"
 
 
@@ -20,11 +18,6 @@ constructor(props) {
 }
 
 
-
-
-
-
-
 componentDidMount(){
     axios.get("http://localhost:8080/Rock/AllRoutes")
     .then(response => response.data)
@@ -32,16 +25,6 @@ componentDidMount(){
         this.setState({rocks: data});
     })
 }
-
-// /AllRoutes/{grading}
-
-// StateRoutes/{state}
-
-// /StateGradeRoutes/{grading}/{state}
-
-// StateGorge/{state}/{gorge}
-
- 
 
 componentDidUpdate(){
     axios.get(`http://localhost:8080/Rock/AllRoutes`)
