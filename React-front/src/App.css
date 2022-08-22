@@ -28,17 +28,6 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-
-
 
 
  header{
@@ -46,18 +35,9 @@
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
-  height: 3rem;
-  
+  height:  12rem;
  }
 
-
- .sticky-inner{
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
- }
 
  h1{
   font-size: 120px;
