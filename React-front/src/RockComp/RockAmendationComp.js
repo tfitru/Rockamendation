@@ -3,25 +3,25 @@ import Button from '@mui/material/Button';
 import axios from 'axios'
 import {useState, useEffect} from 'react'
 import * as React from 'react';
-import StickyHeader from 'react-sticky-header'
 
 
 function RockAmendationComp(){
+  // Set up my getters and setters
     const[gradeLocationRocks, setGradeLocationRocks] = useState([]);
-    const[gradeRocks, setGradeRocks] = useState([]);
 
-
+    // get all my rock data from my api
   const allRockData = async() =>{
     const response = await axios.get("http://localhost:8080/Rock/AllRoutes")
   }
 
+  // use all my rock data from my api
   useEffect(function(){
       allRockData()
   }, []);
 
 
  
-
+// action listener event to change the list based on the state value
  const andd1Change = (e) => {
       axios
           .get(`http://localhost:8080/Rock/StateRoutes/` + e.target.value)
@@ -30,6 +30,7 @@ function RockAmendationComp(){
   }
 
 
+  // change action listener event to change based on the grade button
   const gradeChange = (event) => {
     axios
         .get(`http://localhost:8080/Rock/AllRoutes/` + event.target.value)
@@ -41,29 +42,17 @@ function RockAmendationComp(){
     
     <div >
         
-            
-                
-
-          
-       <header className="sticky-inner">
-    
+       <header>
 
         <h2>
           <Button variant = "contained" onClick={andd1Change} value="Delaware" className='de'> Delaware </Button>
           <Button variant = "contained" onClick={andd1Change} value="New Jersey" className='nj'> New Jersey </Button>
           <Button variant = "contained" onClick={andd1Change} value="Pennsylvania" className='pa'> Pennsylvania </Button>
+          <h1>RockAmendation</h1>
         </h2>
-        <h3>
-          <Button variant = "contained" onClick={gradeChange} value="V0" className='V0'> V0 </Button>
-          <Button variant = "contained" onClick={gradeChange} value="V5" className='V5'> V5 </Button>
-          <Button variant = "contained" onClick={gradeChange} value="V10" className='V10'> V10 </Button>
-        </h3>
-       
-            
      
-      <h1 className="text-center" >RockAmendation</h1>
       </header>  
- 
+
              <table className="table table-striped" >
                 <thead>
                     <tr>
@@ -80,7 +69,7 @@ function RockAmendationComp(){
                     <td>{rock.route}</td>
                     <td>{rock.grading}</td>
                     <td>{rock.gorge}</td>
-                    <link href={rock.url}><td onClick={rock.url}>{rock.url}</td></link>
+                    <td onClick={rock.url}>{rock.url}</td>
                     </tr>
                   ))
                     
@@ -89,7 +78,9 @@ function RockAmendationComp(){
                 </tbody>
             </table>
             </div>
+           
   )
+
 
 
 
