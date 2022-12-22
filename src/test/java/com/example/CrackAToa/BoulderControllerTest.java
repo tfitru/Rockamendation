@@ -41,16 +41,6 @@ public class BoulderControllerTest {
     @Autowired
     private MockMvc mvc;
 
-
-
-
-    
-
-
-
-
-
-
     @Test
     public void getAllRoutes() throws Exception {
         
