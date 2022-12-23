@@ -3,9 +3,14 @@ import Button from '@mui/material/Button';
 import axios from 'axios'
 import {useState, useEffect} from 'react'
 import * as React from 'react';
+import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 
 
 function RockAmendationComp(){
+
+  
+  // create a pagination table in the back end and front end
+
   // Set up my getters and setters
     const[gradeLocationRocks, setGradeLocationRocks] = useState([]);
 
