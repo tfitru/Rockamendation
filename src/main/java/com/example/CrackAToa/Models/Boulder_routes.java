@@ -10,8 +10,9 @@ public class Boulder_routes {
     private Integer id;
     private String route;
     private String grading;
-    private BigDecimal areaLatitude;
-    private BigDecimal areaLongitude;
+
+//    private BigDecimal areaLatitude;
+//    private BigDecimal areaLongitude;
     private String state;
     private String gorge;
     private String area;
@@ -23,11 +24,11 @@ public class Boulder_routes {
 
     public Boulder_routes(){}
 
-    public Boulder_routes(String route, String grading, BigDecimal areaLatitude, BigDecimal areaLongitude, String state, String gorge, String area, String crag, String subCrag, String description, String url) {
+    public Boulder_routes(String route, String grading, String state, String gorge, String area, String crag, String subCrag, String description, String url) {
         this.route = route;
         this.grading = grading;
-        this.areaLatitude = areaLatitude;
-        this.areaLongitude = areaLongitude;
+//        this.areaLatitude = areaLatitude;
+//        this.areaLongitude = areaLongitude;
         this.state = state;
         this.gorge = gorge;
         this.area = area;
@@ -61,21 +62,21 @@ public class Boulder_routes {
         this.grading = grading;
     }
 
-    public BigDecimal getAreaLatitude() {
-        return areaLatitude;
-    }
+//    public BigDecimal getAreaLatitude() {
+//        return areaLatitude;
+//    }
+//
+//    public void setAreaLatitude(BigDecimal areaLatitude) {
+//        this.areaLatitude = areaLatitude;
+//    }
 
-    public void setAreaLatitude(BigDecimal areaLatitude) {
-        this.areaLatitude = areaLatitude;
-    }
-
-    public BigDecimal getAreaLongitude() {
-        return areaLongitude;
-    }
-
-    public void setAreaLongitude(BigDecimal areaLongitude) {
-        this.areaLongitude = areaLongitude;
-    }
+//    public BigDecimal getAreaLongitude() {
+//        return areaLongitude;
+//    }
+//
+//    public void setAreaLongitude(BigDecimal areaLongitude) {
+//        this.areaLongitude = areaLongitude;
+//    }
 
     public String getState() {
         return state;
