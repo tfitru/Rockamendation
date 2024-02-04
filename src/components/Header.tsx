@@ -28,7 +28,7 @@ const Header = () => {
   };
 
   return (
-    <div className='toolbar'><Box sx={{ flexGrow: 1 }}>
+    <div><Box sx={{ flexGrow: 1 }}>
     <AppBar position="static">
       <Toolbar >
         <IconButton
@@ -40,7 +40,7 @@ const Header = () => {
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        <Typography align='center'  variant="h1" component="div" sx={{ flexGrow: 1 }}>
           Rockamendation
         </Typography>
         {auth && (

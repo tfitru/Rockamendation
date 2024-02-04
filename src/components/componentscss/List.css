@@ -1,8 +1,23 @@
 
 
 .rocklist{
-    height: 850px;
+    height: 500px;
     width: 100%;
     min-width: 500px;
     overflow:hidden;
+}
+
+.filterbar{
+    margin-top: 10px;
+}
+.inputbox-route{
+    padding-left: 62px
+}
+
+.inputbox-state{
+    padding-left: 110px
+}
+
+.inputbox-grading{
+    padding-left: 120px
 }
