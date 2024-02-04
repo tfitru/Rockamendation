@@ -1,9 +1,7 @@
-import React, {useEffect} from 'react'
-import { useQuery } from 'react-query';
-import { Route, useGetRocks } from '../api/api';
-import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import React, { useEffect, useState} from 'react'
+import { useGetRocks } from '../api/api';
 import './componentscss/List.css'
-import UserClimb from './UserClimb';
+import DataTable from 'react-data-table-component';
 
 interface BasicRoute {
   id: number,
@@ -13,29 +11,69 @@ interface BasicRoute {
   url: string
 }
 
+
 const List = () => {
-
   const getRocks = useGetRocks();
-
-  const columns: GridColDef[] = [
-    {field: 'id', headerName: 'ID', width: 70},
-    {field: "route", headerName: 'Route', width: 300},
-    {field: "state", headerName: 'State', width: 120},
-    {field: 'grading', headerName: 'Grading', width: 80},
-    {field: 'url', headerName: 'Url', width: 500}    
-]
-
-const rowRocks = ()=> {
-  
-  const routes:BasicRoute[] = []
+  const routes:BasicRoute[] = [];
   getRocks.data?.forEach(route => {routes.push({id: route.id, route: route.route, grading: route.grading, state: route.state, url: route.url})})  
 
-  return routes;
-};
+  const [url, setUrl] = useState("");
+  const [records, setRecords] = useState(routes)
+  const [bool, setBool] = useState(true)
+  
+  
+  const columns = [
+    {
+      name: "Route",
+      selector: row => row.route,
+      sortable: true
+    },
+    {
+      name: "State",
+      selector: row => row.state,
+      sortable: true
+    },
+    {
+      name: "Grading",
+      selector: row => row.grading,
+      sortable: true
+    },
+    {
+      name: "URL",
+      selector: row => <div onClick={(e) => {onSelect(e)}} >
+        <a href={url} target="_blank" rel="noreferrer">{row.url}</a>
+        </div>,
+      sortable: true
+    }
+  ];
+  
+  const onSelect = (url: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    setUrl(url.currentTarget.childNodes[0].textContent)
+  }
+  
+  const handleFilterRoute = (event) => {
+    const newData = routes.filter(row => {
+      return row.route.toLowerCase().includes(event.target.value.toLowerCase());
+    })
+    setBool(false)
+    setRecords(newData)
+  }
 
+  const handleFilterState = (event) => {
+    const newData = routes.filter(row => {
+      return row.state.toLowerCase().includes(event.target.value.toLowerCase());
+    })
+    setBool(false)
+    setRecords(newData)
+  }
 
-
-const rows = rowRocks();
+  const handleFilterGrading = (event) => {
+    const newData = routes.filter(row => {
+      return row.grading.toLowerCase().includes(event.target.value.toLowerCase());
+    })
+    setBool(false)
+    setRecords(newData)
+  }
 
 
 // need to have another box on the other side to show the extra details on hover for each route
@@ -44,21 +82,26 @@ const rows = rowRocks();
 
 // TODO: need to figure out how to make page dynamic fit and get the tables to line up well side by side
 // TODO: create user table to store username, pasword (encryption and uncryption), store list of completed climbs and uncompleted climbs
-// TODO: set up the routes for each page
+// TODO: match the input box to the designated columns 
 
 
   return (
-    <div  >
-      <div className='rocklist' ><DataGrid 
-    columns={columns} 
-    rows={rows} 
-    checkboxSelection
-     />
-     </div>
-     {/* <div className='userlist'>
-      <UserClimb />
-     </div> */}
-     </div>
+    <>
+      <>
+      <div className='filterbar'>
+      <label className="inputbox-route">Route:<input  type="text"  onChange={handleFilterRoute}></input></label>
+      <label className="inputbox-state">State:<input  type="text" onChange={handleFilterState}></input></label>
+      <label className="inputbox-grading">Grading:<input type="text" onChange={handleFilterGrading}></input></label>
+      </div>
+        <DataTable
+        columns={columns}
+        data={bool ? routes : records}
+        selectableRows
+        fixedHeader
+        pagination
+       />
+     </>
+     </>
   )
 }
 
