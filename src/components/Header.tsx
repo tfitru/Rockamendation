@@ -28,7 +28,8 @@ const Header = () => {
   };
 
   return (
-    <div><Box sx={{ flexGrow: 1 }}>
+    <div className="header">
+    <Box sx={{ flexGrow: 1 }}>
     <AppBar position="static">
       <Toolbar >
         <IconButton

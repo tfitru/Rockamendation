@@ -2,6 +2,7 @@ import React, { useEffect, useState} from 'react'
 import { useGetRocks } from '../api/api';
 import './componentscss/List.css'
 import DataTable from 'react-data-table-component';
+import Header from './Header';
 
 interface BasicRoute {
   id: number,
@@ -75,19 +76,12 @@ const List = () => {
     setRecords(newData)
   }
 
-
-// need to have another box on the other side to show the extra details on hover for each route
-
-// Another box below to show the climbs the person wants to complete and completed climbs
-
-// TODO: need to figure out how to make page dynamic fit and get the tables to line up well side by side
 // TODO: create user table to store username, pasword (encryption and uncryption), store list of completed climbs and uncompleted climbs
-// TODO: match the input box to the designated columns 
-
 
   return (
     <>
       <>
+      <Header />
       <div className='filterbar'>
       <label className="inputbox-route">Route:<input  type="text"  onChange={handleFilterRoute}></input></label>
       <label className="inputbox-state">State:<input  type="text" onChange={handleFilterState}></input></label>
