@@ -1,21 +1,50 @@
 import React from 'react'
+import { Box, Card, Chip, Divider, Grid, Stack, ThemeProvider, Typography } from '@mui/material'
+import './componentscss/Home.css'
+import background from "../images/pexels-michael-block-1691617-3225530.png";
+
 
 const Home = () => {
 
-    // Each of the press here will be a route
-    // send to Login for a username and password
-    // send to sign-in to create a username and password
-    // send them to the main page as a guest with no account
-
   return (
-
-    <div>
-        <h1>Welcome to Rockamendation!</h1>
-        <h2>The site to find the next best climb</h2>
-        <p>Press here to Login</p>
-        <p>Press here to Sign-In</p>
-        <p>Press here to be a guest</p>
-        </div>
+    <>
+    <div className='home' style={{
+      backgroundImage : `url(${background})`,
+      backgroundPosition: `center`,
+      backgroundRepeat: `no-repeat`,
+      backgroundSize: `cover`,
+      backgroundAttachment: 'fixed'}}>
+      <Grid
+    container
+    spacing={0}
+    direction="column"
+    alignItems="center"
+    justifyContent="center"
+    sx={{ minHeight: '100vh' }}>
+  <Grid item xs={3}>
+  <Card variant="outlined" sx={{ maxWidth: 360 }}>
+      <Box sx={{ p: 2 }}>
+        <Stack direction="row" justifyContent="space-between" alignItems="center">
+          <Typography gutterBottom variant="h5" component="div">
+          Welcome to Rockamendation! The site to find the next best climb
+          </Typography>
+        </Stack>
+        <Typography color="text.secondary" variant="body2">
+        Click here to Login
+        </Typography>
+        <Typography color="text.secondary" variant="body2">
+        Click here to Sign-Up
+        </Typography>
+        <Typography color="text.secondary" variant="body2">
+        Click here to be a <a href="/list"> guest </a>
+        </Typography>
+      </Box>
+      <Divider />
+    </Card>  
+  </Grid>
+</Grid> 
+  </div>
+  </>
   )
 }
 
