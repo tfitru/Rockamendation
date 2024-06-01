@@ -8,12 +8,14 @@ import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import { Link } from '@mui/material';
 
 
 const Header = () => {
 
     const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [anchorMenu, setAnchorMenu] = React.useState<null | HTMLElement>(null);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAuth(event.target.checked);
@@ -23,23 +25,51 @@ const Header = () => {
     setAnchorEl(event.currentTarget);
   };
 
+  const handleMenuHamburger = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorMenu(event.currentTarget);
+  };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
 
+  const handleClosHamburger = () => {
+    setAnchorMenu(null);
+  };
+
+  // need to fix clicking outside of menu should close menu
+
   return (
     <div className="header">
     <Box sx={{ flexGrow: 1 }}>
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Toolbar >
         <IconButton
           size="large"
           edge="start"
           color="inherit"
           aria-label="menu"
+          onClick={handleMenuHamburger}
           sx={{ mr: 2 }}
         >
           <MenuIcon />
+          <Menu
+              id="menu-appbar"
+              anchorEl={anchorMenu}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              open={Boolean(anchorMenu)}
+              onClose={handleClosHamburger}
+            >
+              <MenuItem onClick={handleClosHamburger}>Home</MenuItem>
+            </Menu>
         </IconButton>
         <Typography align='center'  variant="h1" component="div" sx={{ flexGrow: 1 }}>
           Rockamendation

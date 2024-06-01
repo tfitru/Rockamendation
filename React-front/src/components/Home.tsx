@@ -33,7 +33,7 @@ const Home = () => {
         Click here to Login
         </Typography>
         <Typography color="text.secondary" variant="body2">
-        Click here to Sign-Up
+        Click here to <a href="/signup"> Sign-Up</a>
         </Typography>
         <Typography color="text.secondary" variant="body2">
         Click here to be a <a href="/list"> guest </a>
