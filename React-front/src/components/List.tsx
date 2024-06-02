@@ -81,7 +81,10 @@ const List = () => {
   return (
     <>
       <>
-      <Header />
+      <div
+    style={{
+        position: 'sticky',
+        top: 0}}><Header/></div>
       <div className='filterbar'>
       <label className="inputbox-route">Route:<input  type="text"  onChange={handleFilterRoute}></input></label>
       <label className="inputbox-state">State:<input  type="text" onChange={handleFilterState}></input></label>

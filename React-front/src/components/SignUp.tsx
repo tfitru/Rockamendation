@@ -3,10 +3,17 @@ import React from 'react'
 import background from "../images/pexels-michael-block-1691617-3225530.png";
 import Header from './Header';
 
+interface user {
+    name: string,
+    password: string
+}
 
 export const SignUp = () => {
 
 
+    // TODO write functions to handle user interface
+    // need textfield to validate name and password
+    // then button needs to make sure username and password are good to go
 
 
 
@@ -34,23 +41,34 @@ export const SignUp = () => {
   <Grid item xs={3}>
   <Card variant="outlined" sx={{ maxWidth: 360 }}>
       <Box sx={{ p: 2 }}>
+      <Typography gutterBottom variant="h4" component="div">
+          Make a new account
+        </Typography>
+      </Box>
+      <Divider />
+      <Box sx={{ p: 2 }}>
         <Stack direction="row" justifyContent="space-between" alignItems="center">
           <Typography gutterBottom variant="subtitle1" component="div">
           Please enter your username
           </Typography>
-          <TextField id="standard-basic" label="Username" variant="standard" />
+          <TextField id="standard-basic" label="Username" variant="standard" required inputProps={{ maxLength: 6 }}/>
         </Stack>
         <Stack direction="row" justifyContent="space-between" alignItems="center">
           <Typography gutterBottom variant="subtitle1" component="div">
           Please enter your password
           </Typography>
-          <TextField id="standard-basic" label="Password" variant="standard" />
+          <TextField 
+          id="standard-basic" 
+          label="Password" 
+          variant="standard" 
+          required type="password" 
+          inputProps={{ maxLength: 8 }}/>
         </Stack>
       </Box>
       <Divider />
       <Box sx={{ p: 2 }}>
         <Stack direction="row" justifyContent="space-between" alignItems="center">
-        <Button variant="contained">Sign-Up</Button>
+        <Button type='submit' variant="contained">Sign-Up</Button>
         </Stack>
       </Box>
     </Card>  
