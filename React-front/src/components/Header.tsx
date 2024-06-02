@@ -26,7 +26,6 @@ const Header = () => {
   };
 
   const handleMenuHamburger = (event: React.MouseEvent<HTMLElement>) => {
-    console.log(event.currentTarget)
     setAnchorMenu(event.currentTarget);
   };
 
@@ -37,8 +36,6 @@ const Header = () => {
   const handleClosHamburger = () => {
     setAnchorMenu(null);
   };
-
-  // need to fix clicking outside of menu should close menu
 
   return (
     <div className="header">
