@@ -50,7 +50,7 @@ export const SignUp = () => {
       <Divider />
       <Box sx={{ p: 2 }}>
         <Stack direction="row" justifyContent="space-between" alignItems="center">
-        <Button variant="contained">Contained</Button>
+        <Button variant="contained">Sign-Up</Button>
         </Stack>
       </Box>
     </Card>  

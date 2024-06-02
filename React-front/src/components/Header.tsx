@@ -26,6 +26,7 @@ const Header = () => {
   };
 
   const handleMenuHamburger = (event: React.MouseEvent<HTMLElement>) => {
+    console.log(event.currentTarget)
     setAnchorMenu(event.currentTarget);
   };
 
@@ -53,26 +54,23 @@ const Header = () => {
           sx={{ mr: 2 }}
         >
           <MenuIcon />
+          </IconButton>
           <Menu
               id="menu-appbar"
               anchorEl={anchorMenu}
               anchorOrigin={{
-                vertical: 'top',
+                vertical: 'bottom',
                 horizontal: 'left',
               }}
               keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
               open={Boolean(anchorMenu)}
               onClose={handleClosHamburger}
             >
-              <MenuItem onClick={handleClosHamburger}>Home</MenuItem>
+              <MenuItem onClick={handleClosHamburger}><Link href='/' underline='none'>Home</Link></MenuItem>
             </Menu>
-        </IconButton>
+        
         <Typography align='center'  variant="h1" component="div" sx={{ flexGrow: 1 }}>
-          Rockamendation
+        <Link color="inherit" href='/' underline='none'> Rockamendation </Link>
         </Typography>
         {auth && (
           <div>

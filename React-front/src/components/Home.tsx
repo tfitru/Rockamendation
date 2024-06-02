@@ -2,12 +2,18 @@ import React from 'react'
 import { Box, Card, Chip, Divider, Grid, Stack, ThemeProvider, Typography } from '@mui/material'
 import './componentscss/Home.css'
 import background from "../images/pexels-michael-block-1691617-3225530.png";
+import Header from './Header';
 
 
 const Home = () => {
 
   return (
     <>
+    <div
+    style={{
+        position: 'sticky',
+        top: 0,
+        overflow: 'hidden'}}><Header/></div>
     <div className='home' style={{
       backgroundImage : `url(${background})`,
       backgroundPosition: `center`,
